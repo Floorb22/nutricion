@@ -114,6 +114,4 @@ public class Dieta {
         return "Dieta{" + "codDieta=" + codDieta + ", nombreD=" + nombreD + ", menus=" + menus + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", pesoFinal=" + pesoFinal + ", totalCalorias=" + totalCalorias + ", paciente=" + paciente + '}';
     }
     
-    //Metodos
-    
 }

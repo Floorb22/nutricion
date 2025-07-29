@@ -91,6 +91,5 @@ public class Comida {
     public String toString() {
         return "Comida{" + "codComida=" + codComida + ", nombre=" + nombre + ", tipoComida=" + tipoComida + ", caloriasPor100g=" + caloriasPor100g + ", detalle=" + detalle + ", baja=" + baja + '}';
     }
-    
-    //Metodos
+   
 }

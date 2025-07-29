@@ -43,7 +43,6 @@ public class DietaVista extends javax.swing.JInternalFrame {
         jtf_calorias = new javax.swing.JTextField();
         jb_nuevo = new javax.swing.JButton();
         jb_guardar = new javax.swing.JButton();
-        jb_borrar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jtf_nro = new javax.swing.JTextField();
 
@@ -118,15 +117,6 @@ public class DietaVista extends javax.swing.JInternalFrame {
             }
         });
 
-        jb_borrar.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
-        jb_borrar.setForeground(new java.awt.Color(255, 102, 102));
-        jb_borrar.setText("Borrar");
-        jb_borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_borrarActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Paciente:");
@@ -154,27 +144,21 @@ public class DietaVista extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jb_nuevo)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtf_nombre)
-                                    .addComponent(jd_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(jd_fin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtf_pesofinal)
-                                    .addComponent(jtf_calorias)
-                                    .addComponent(jtf_nro)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                                .addComponent(jb_guardar)
-                                .addGap(183, 183, 183)))))
-                .addGap(18, 18, 18)
-                .addComponent(jb_borrar)
-                .addGap(43, 43, 43))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtf_nombre)
+                            .addComponent(jd_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(jd_fin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtf_pesofinal)
+                            .addComponent(jtf_calorias)
+                            .addComponent(jtf_nro)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jb_nuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_guardar)))
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,12 +192,15 @@ public class DietaVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtf_nro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_nuevo)
-                    .addComponent(jb_guardar)
-                    .addComponent(jb_borrar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jb_guardar)
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_nuevo)
+                        .addGap(27, 27, 27))))
         );
 
         pack();
@@ -246,11 +233,6 @@ public class DietaVista extends javax.swing.JInternalFrame {
         limpiar();
     }//GEN-LAST:event_jb_guardarActionPerformed
 
-    private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed
-        ddata.borrarDieta(jtf_nombre.getText());
-        limpiar();
-    }//GEN-LAST:event_jb_borrarActionPerformed
-
     private void limpiar(){
         jtf_nombre.setText("");
         jd_inicio.setDate(new Date());
@@ -268,7 +250,6 @@ public class DietaVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton jb_borrar;
     private javax.swing.JButton jb_guardar;
     private javax.swing.JButton jb_nuevo;
     private com.toedter.calendar.JDateChooser jd_fin;

@@ -72,16 +72,14 @@ public class PacienteData {
         }
     }
 
- 
- 
     //Actualizar peso actual
-    public void actualizarPesoActual(float pesoActual, String nombre) {
-        String sql = "UPDATE paciente SET pesoActual=? WHERE nombre=?";
+    public void actualizarPesoActual(float pesoActual, int cod) {
+        String sql = "UPDATE paciente SET pesoActual=? WHERE nroPaciente=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setFloat(1, pesoActual);
-            ps.setString(2, nombre);
+            ps.setInt(2, cod);
 
             int x = ps.executeUpdate();
 
@@ -94,7 +92,6 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "No se pudo modificar el peso actual." + ex.getMessage());
         }
     }
-    
 
     //Listas de pacientes que llegaron a la meta
     public ArrayList<Paciente> listarPacientesPesoLogrado() {
@@ -126,8 +123,38 @@ public class PacienteData {
         return pacientes;
     }
 
-//Lista todos los pacientes
- public ArrayList<Paciente> listarPacientes() {
+    //Lista de pacientes que no llegaron a la meta
+    public ArrayList<Paciente> listarPacientesNoLogrado() {
+
+        String sql = "SELECT * FROM paciente WHERE pesoActual > pesoBuscado";
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+                paciente.setAltura(rs.getFloat("altura"));
+                paciente.setEdad(rs.getInt("edad"));
+                paciente.setNroPaciente(rs.getInt("nroPaciente"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setPesoActual(rs.getFloat("pesoActual"));
+                paciente.setPesoBuscado(rs.getFloat("pesoBuscado"));
+                pacientes.add(paciente);
+            }
+            //System.out.println(pacientes);
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar la lista");
+
+        }
+
+        return pacientes;
+    }
+
+    //Lista todos los pacientes
+    public ArrayList<Paciente> listarPacientes() {
 
         String sql = "SELECT * FROM paciente";
         ArrayList<Paciente> p = new ArrayList<>();

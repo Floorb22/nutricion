@@ -164,10 +164,10 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtf_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtf_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -263,15 +263,14 @@ public class PacienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
-        String nombre = jtf_nombre.getText();
-        Integer edad = Integer.parseInt(jtf_edad.getText());
-        Float altura = Float.parseFloat(jtf_altura.getText());
         Float pesoA = Float.parseFloat(jtf_pesoactual.getText());
-        Float pesoB= Float.parseFloat(jtf_pesobuscado.getText());
-        
-        pdata.actualizarPesoActual(pesoA, nombre);
+        try{
+            Integer nro = Integer.parseInt(jtf_numero.getText());
+            pdata.actualizarPesoActual(pesoA, nro);
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número valido.");
+        }
         limpiar();
-        
     }//GEN-LAST:event_jb_modificarActionPerformed
 
     private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed

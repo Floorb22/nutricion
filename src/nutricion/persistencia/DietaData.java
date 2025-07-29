@@ -75,7 +75,4 @@ public class DietaData {
         }
     }
         
-
-    
-    //Calcular diferencia de peso
 }

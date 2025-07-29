@@ -91,5 +91,4 @@ public class Paciente {
         return "Paciente{" + "nroPaciente=" + nroPaciente + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", pesoActual=" + pesoActual + ", pesoBuscado=" + pesoBuscado + '}';
     }
 
-    //Metodos
 }

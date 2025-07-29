@@ -71,5 +71,4 @@ public class RenglonComida {
         return "RenglonComida{" + "nroRenglon=" + nroRenglon + ", alimento=" + alimento + ", cantidadGrs=" + cantidadGrs + ", subtotalCalorias=" + subtotalCalorias + '}';
     }
     
-    //Metodos
 }

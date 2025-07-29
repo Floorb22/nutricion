@@ -53,19 +53,14 @@
                               <EmptySpace pref="159" max="32767" attributes="0"/>
                               <Component id="jb_eliminar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtf_nombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtf_tipo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtf_calorias" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtf_detalle" alignment="0" pref="227" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jrb_baja" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtf_nombre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtf_tipo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtf_calorias" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtf_detalle" alignment="0" pref="227" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jrb_baja" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -116,7 +111,7 @@
                   <Component id="jb_nuevo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jtf_cod" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>

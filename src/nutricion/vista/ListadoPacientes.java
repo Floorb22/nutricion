@@ -16,6 +16,7 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
 
     private ArrayList<Paciente> pacientesT;
     private ArrayList<Paciente> pacientesF;
+    private ArrayList<Paciente> pacientesN;
 
     private DefaultTableModel modelo;
 
@@ -29,6 +30,7 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
         pdata = new PacienteData();
         pacientesT = (ArrayList<Paciente>) pdata.listarPacientes();
         pacientesF = (ArrayList<Paciente>) pdata.listarPacientesPesoLogrado();
+        pacientesN = (ArrayList<Paciente>)pdata.listarPacientesNoLogrado();
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
     }
@@ -47,6 +49,7 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
         jrb_pacientesF = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_pacientes = new javax.swing.JTable();
+        jrb_pacienteno = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setClosable(true);
@@ -96,6 +99,16 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jt_pacientes);
 
+        jrb_pacienteno.setBackground(new java.awt.Color(255, 204, 255));
+        jrb_pacienteno.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
+        jrb_pacienteno.setForeground(new java.awt.Color(255, 102, 102));
+        jrb_pacienteno.setText("Lista de pacientes que no lograron objetivo");
+        jrb_pacienteno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_pacientenoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,8 +124,11 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jrb_pacientesF))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(71, 71, 71)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jrb_pacienteno)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,9 +140,11 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrb_pacientes)
                     .addComponent(jrb_pacientesF))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrb_pacienteno)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,14 +153,23 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
     private void jrb_pacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_pacientesActionPerformed
         borrarFilaTabla();
         jrb_pacientesF.setSelected(false);
+        jrb_pacienteno.setSelected(false);
         cargarDatosPacientesT();
     }//GEN-LAST:event_jrb_pacientesActionPerformed
 
     private void jrb_pacientesFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_pacientesFActionPerformed
         borrarFilaTabla();
         jrb_pacientes.setSelected(false);
+        jrb_pacienteno.setSelected(false);
         cargarDatosPacientesF();
     }//GEN-LAST:event_jrb_pacientesFActionPerformed
+
+    private void jrb_pacientenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_pacientenoActionPerformed
+        borrarFilaTabla();
+        jrb_pacientes.setSelected(false);
+        jrb_pacientesF.setSelected(false);
+        cargarDatosPacientesN();
+    }//GEN-LAST:event_jrb_pacientenoActionPerformed
 
     private void armarCabeceraTabla() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
@@ -179,9 +206,17 @@ public class ListadoPacientes extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{p.getNroPaciente(), p.getNombre(), p.getEdad(), p.getAltura(), p.getPesoActual(), p.getPesoBuscado()});
         }
     }
+    
+    private void cargarDatosPacientesN(){
+        pacientesN = pdata.listarPacientesNoLogrado();
+        for (Paciente p : pacientesN) {
+            modelo.addRow(new Object[]{p.getNroPaciente(), p.getNombre(), p.getEdad(), p.getAltura(), p.getPesoActual(), p.getPesoBuscado()});
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton jrb_pacienteno;
     private javax.swing.JRadioButton jrb_pacientes;
     private javax.swing.JRadioButton jrb_pacientesF;
     private javax.swing.JTable jt_pacientes;
